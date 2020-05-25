@@ -10,7 +10,7 @@ export const fetchData = query => {
     });
 };
 function login (data) {
-    return http('https://rap2api.mumzone.cn//app/mock/45/POST/login', data, 'POST')
+    return http('https://rap2api.mumzone.cn//app/33mock/45/POST/login', data, 'POST')
 }
 
 function roleTree (data) {

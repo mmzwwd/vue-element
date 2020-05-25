@@ -48,7 +48,6 @@
                                 prefix-icon="el-icon-phone"
                                 placeholder="请输入手机号"
                                 maxlength="11"
-                                @keyup.native="replace(signIn.userName,signIn,"userName")"
                                 clearable
                             ></el-input>
                         </el-form-item>
@@ -63,7 +62,6 @@
                                         v-model="signIn.Code"
                                         oninput="this.value=this.value.replace(/\D/g,'')"
                                         onafterpaste="this.value=this.value.replace(/\D/g,'')"
-                                        @keyup.enter.native="signInBtn("signIn")"
                                     ></el-input>
                                 </el-col>
                                 <el-col :span="12">
@@ -93,6 +91,8 @@
 <script>
 import { login } from '../../api/index';
 import util from '@/utils/check';
+import md5 from 'js-md5';
+
 export default {
     data: function() {
         return {
@@ -175,6 +175,7 @@ export default {
             }
         },
         submitForm() {
+            console.log(md5(this.param.password))
             this.$refs.login.validate(valid => {
                 if (valid) {
                     this.$message.success('登录成功');

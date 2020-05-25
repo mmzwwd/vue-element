@@ -27,7 +27,10 @@ function endLoading() {
     loading.close()
 }
 /**************************loadingEnd************************ */
-
+function signOut () {
+    Cookies.remove(process.env.COOKIE_NAME + "_companyName");
+    location.reload();
+  }
 /**************************pushLoadingStart************************ */
 
 axios.interceptors.request.use(function(config) {
@@ -46,12 +49,21 @@ axios.interceptors.response.use(response => {
     return response
 },
 error => {
-    console.log(config)
     if (error.response) {
     //   clearTimeout(timer)
       endLoading()
       switch (error.response.status) {
         case 401:
+            Vue.prototype.$confirm('登录信息失效,请重新登录', '提示', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'warning'
+              }).then(() => {
+                signOut()
+              })
+              .catch(() => {
+                signOut()         
+              });
           break
         case 404:
           break
