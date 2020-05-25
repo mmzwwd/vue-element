@@ -1,6 +1,6 @@
 import request from '../utils/request';
-// import url from './path'
-// import { http } from './axios'
+import url from './path'
+import { http } from './axios'
 
 export const fetchData = query => {
     return request({
@@ -9,15 +9,15 @@ export const fetchData = query => {
         params: query
     });
 };
-// function login (data) {
-//     return http(url.login, data, 'POST')
-// }
+function login (data) {
+    return http('https://rap2api.mumzone.cn//app/mock/45/POST/login', data, 'POST')
+}
 
-// function roleTree (data) {
-//     return http(url.roleTree, data, 'POST')
-// }
+function roleTree (data) {
+    return http(url.roleTree, data, 'POST')
+}
 
-// export {
-//     login,
-//     roleTree,
-// }
+export {
+    login,
+    roleTree,
+}

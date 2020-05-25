@@ -102,7 +102,8 @@
 </template>
 
 <script>
-import { fetchData } from '../../api/index';
+import { fetchData,login } from '../../api/index';
+
 export default {
     name: 'basetable',
     data() {
@@ -125,11 +126,23 @@ export default {
     },
     created() {
         this.getData();
+        this.login()
     },
     methods: {
         // 获取 easy-mock 的模拟数据
         getData() {
             fetchData(this.query).then(res => {
+                console.log(res);
+                this.tableData = res.list;
+                this.pageTotal = res.pageTotal || 50;
+            });
+        },
+         login() {
+             let data= {
+                 username:'wwd',
+                 password:'11111111'
+             }
+            login(data).then(res => {
                 console.log(res);
                 this.tableData = res.list;
                 this.pageTotal = res.pageTotal || 50;

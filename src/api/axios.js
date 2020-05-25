@@ -3,7 +3,7 @@ import axios from 'axios'
 import promise from 'es6-promise'
 import apiPath from './path.js'
 import Vue from 'vue'
-import store from '../store'
+// import store from '../store'
 
 promise.polyfill()
 axios.defaults.withCredentials = false
@@ -71,9 +71,9 @@ error => {
  */
 const http = (url, data, method = 'GET', responseType = 'json') => {
     return new Promise((resolve, reject) => {
-        let token = store.state.token
+        // let token = store.state.token  token: 'token'
         let obj = {
-            token: token
+           
         }
         if (method == 'GET') {
             obj = Object.assign(obj, data)
