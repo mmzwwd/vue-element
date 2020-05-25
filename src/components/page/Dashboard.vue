@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="dashboard">
         <el-card class="box-card">
             <p>系统介绍</p>
             <div class="text item" style="margin-top: 20px;">本系统为地质科学院教师电子档案管理系统，系内部档案，归内部人员使用。</div>
@@ -10,10 +10,12 @@
     </div>
 </template>
 <style>
-.el-card__body{
+.dashboard .el-card__body{
     padding-left: 100px;
     padding-top: 88px;
 }
+</style>
+<style scoped>
 .box-card  .text {
     font-size: 16px;
 }
@@ -22,12 +24,12 @@
     padding: 18px 0;
 }
 
-.box-card {
+.dashboard .box-card {
     width: 98%;
     position: absolute;
     height: 97%;
 }
-.box-card p{
+.dashboard .box-card p{
     font-size: 20px;
 }
 </style>

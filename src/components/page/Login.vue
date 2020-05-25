@@ -92,7 +92,7 @@
 import { login } from '../../api/index';
 import util from '@/utils/check';
 import md5 from 'js-md5';
-
+import Cookies from "js-cookie";
 export default {
     data: function() {
         return {
@@ -178,6 +178,7 @@ export default {
             console.log(md5(this.param.password))
             this.$refs.login.validate(valid => {
                 if (valid) {
+                    Cookies.set('theme',1)
                     this.$message.success('登录成功');
                     localStorage.setItem('ms_username', this.param.username);
                     this.$router.push('/');

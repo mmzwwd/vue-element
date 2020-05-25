@@ -21,6 +21,26 @@ const i18n = new VueI18n({
     messages
 });
 
+
+Vue.prototype.resetSetItem = function (key, newVal) {
+    if (key =='collapse') {
+        // 创建一个StorageEvent事件
+        var newStorageEvent = document.createEvent('StorageEvent');
+        const storage = {
+            setItem: function (k, val) {
+                sessionStorage.setItem(k, val);
+
+                // 初始化创建的事件
+                newStorageEvent.initStorageEvent('setItem', false, false, k, null, val, null, null);
+
+                // 派发对象
+                window.dispatchEvent(newStorageEvent)
+            }
+        }
+        return storage.setItem(key, newVal);
+    }
+ }
+
 //使用钩子函数对路由进行权限跳转
 router.beforeEach((to, from, next) => {
     document.title = `${to.meta.title} | 中国地质`;
@@ -55,8 +75,8 @@ if (process.env.NODE_ENV === 'production') {
         //test 测试环境
         console.log("test")
         axios.defaults.baseURL = ' http://192.168.1.7:8080';//路径
-       } 
-} else { //dev 开发环境 
+       }
+} else { //dev 开发环境
     axios.defaults.baseURL = 'http://localhost:8080';//路径
  }
 new Vue({

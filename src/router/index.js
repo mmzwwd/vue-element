@@ -20,6 +20,11 @@ export default new Router({
                     meta: { title: '首页' }
                 },
                 {
+                    path: '/archives',
+                    component: () => import(/* webpackChunkName: "dashboard" */ '../components/page/archives.vue'),
+                    meta: { title: '档案信息' }
+                },
+                {
                     path: '/icon',
                     component: () => import(/* webpackChunkName: "icon" */ '../components/page/Icon.vue'),
                     meta: { title: '自定义图标' }

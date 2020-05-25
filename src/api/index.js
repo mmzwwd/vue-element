@@ -12,6 +12,9 @@ export const fetchData = query => {
 function login (data) {
     return http('https://rap2api.mumzone.cn//app/33mock/45/POST/login', data, 'POST')
 }
+function uploadFile (data) {
+    return http('http://test2.mumzone.cn/egg_public/upload/uploadFile?token=SEhULVNFQ1RFVDoxNTkwMzkyMDEyOkZFNzA5NjZFRDQwMDAwMDBDODAwMDAwMDAwMUFFMDAw', data, 'POST')
+}
 
 function roleTree (data) {
     return http(url.roleTree, data, 'POST')
@@ -20,4 +23,5 @@ function roleTree (data) {
 export {
     login,
     roleTree,
+    uploadFile,
 }

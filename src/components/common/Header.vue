@@ -130,7 +130,7 @@ export default {
     line-height: 70px;
 }
 .collapse-btn:hover {
-    background: #909EFF !important; 
+    background: #8CC4FC		 !important; 
 }
 .header .logo {
     float: left;
