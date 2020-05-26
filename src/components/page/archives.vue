@@ -7,8 +7,12 @@
       <el-tab-pane label="职业信息">
         <vocation-tab></vocation-tab>
       </el-tab-pane>
-      <el-tab-pane label="科研信息">角色管理</el-tab-pane>
-      <el-tab-pane label="学书信息">定时任务补偿</el-tab-pane>
+      <el-tab-pane label="科研信息">
+        <scienc-tab></scienc-tab>
+      </el-tab-pane>
+      <el-tab-pane label="学书信息">
+        <student-tab></student-tab>
+      </el-tab-pane>
     </el-tabs>
   </div>
 </template>
@@ -16,9 +20,14 @@
 <script>
 import basicTab from "./archives/basicTab";
 import vocationTab from "./archives/vocationTab";
+import sciencTab from "./archives/sciencTab";
+import studentTab from "./archives/studentTab";
+
+
+
 
 export default {
-  components: { basicTab,vocationTab },
+  components: { basicTab,vocationTab,sciencTab,studentTab },
   name: '',
   data(){
     return {}

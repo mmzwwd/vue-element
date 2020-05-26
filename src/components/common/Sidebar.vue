@@ -154,7 +154,7 @@ export default {
         }
     },
     created() {
-        this.items=routerUrl.manage;
+        this.items=routerUrl.operate;
         // manage
         // operate
         // superManage

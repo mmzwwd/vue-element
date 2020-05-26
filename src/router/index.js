@@ -25,6 +25,11 @@ export default new Router({
                     meta: { title: '档案信息' }
                 },
                 {
+                    path: '/manageCenter',
+                    component: () => import(/* webpackChunkName: "dashboard" */ '../components/page/manageCenter.vue'),
+                    meta: { title: '用户管理' }
+                },
+                {
                     path: '/icon',
                     component: () => import(/* webpackChunkName: "icon" */ '../components/page/Icon.vue'),
                     meta: { title: '自定义图标' }
