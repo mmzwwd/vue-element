@@ -24,18 +24,18 @@
         >
             <el-row>
                 <el-col :span="8">
-                    <el-form-item label="工作单位:" prop="name">
-                        <el-input v-model="jobForm.name" class="maxwidth"></el-input>
+                    <el-form-item label="工作单位:" prop="workUnit">
+                        <el-input v-model="jobForm.workUnit" class="maxwidth"></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
-                    <el-form-item label="参加工作日期:" prop="region">
-                        <el-date-picker v-model="jobForm.value" type="date" placeholder="选择日期"></el-date-picker>
+                    <el-form-item label="参加工作日期:" prop="joinInWorkDat">
+                        <el-date-picker v-model="jobForm.joinInWorkDat" type="date" placeholder="选择日期"></el-date-picker>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
-                    <el-form-item label="岗位等级:" prop="region">
-                        <el-select v-model="jobForm.region" placeholder="请选择活动区域">
+                    <el-form-item label="岗位等级:" prop="postGrade">
+                        <el-select v-model="jobForm.postGrade" placeholder="请选择活动区域">
                             <el-option label="区域一" value="shanghai"></el-option>
                             <el-option label="区域二" value="beijing"></el-option>
                         </el-select>
@@ -44,48 +44,48 @@
             </el-row>
             <el-row>
                 <el-col :span="8">
-                    <el-form-item label="职称:" prop="region">
-                        <el-select v-model="jobForm.region" placeholder="请选择活动区域">
+                    <el-form-item label="职称:" prop="technicalPost">
+                        <el-select v-model="jobForm.technicalPost" placeholder="请选择活动区域">
                             <el-option label="区域一" value="shanghai"></el-option>
                             <el-option label="区域二" value="beijing"></el-option>
                         </el-select>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
-                    <el-form-item label="获现职称日期:" prop="region">
-                        <el-date-picker v-model="jobForm.value" type="date" placeholder="选择日期"></el-date-picker>
+                    <el-form-item label="获现职称日期:" prop="getTheTitleDate">
+                        <el-date-picker v-model="jobForm.getTheTitleDate" type="date" placeholder="选择日期"></el-date-picker>
                     </el-form-item>
                 </el-col>
             </el-row>
             <el-row>
                 <el-col :span="8">
-                    <el-form-item label="获博士生导师资格日期:" prop="region">
-                        <el-date-picker v-model="jobForm.value" type="date" placeholder="选择日期"></el-date-picker>
+                    <el-form-item label="获博士生导师资格日期:" prop="teacherQualificationDate">
+                        <el-date-picker v-model="jobForm.teacherQualificationDate" type="date" placeholder="选择日期"></el-date-picker>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
-                    <el-form-item label="获硕士生导师资格日期:" prop="region">
-                        <el-date-picker v-model="jobForm.value" type="date" placeholder="选择日期"></el-date-picker>
+                    <el-form-item label="获硕士生导师资格日期:" prop="teacherQualificationDate">
+                        <el-date-picker v-model="jobForm.teacherQualificationDate" type="date" placeholder="选择日期"></el-date-picker>
                     </el-form-item>
                 </el-col>
             </el-row>
             <el-row>
                 <el-col :span="8">
-                    <el-form-item label="招生专业:" prop="name">
-                        <el-input v-model="jobForm.name" class="maxwidth"></el-input>
+                    <el-form-item label="招生专业:" prop="recruitStudentProfession">
+                        <el-input v-model="jobForm.recruitStudentProfession" class="maxwidth"></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
-                    <el-form-item label="研究方向:" prop="region">
-                        <el-select v-model="jobForm.region" placeholder="请选择活动区域">
+                    <el-form-item label="研究方向:" prop="researchDirection">
+                        <el-select v-model="jobForm.researchDirection" placeholder="请选择活动区域">
                             <el-option label="区域一" value="shanghai"></el-option>
                             <el-option label="区域二" value="beijing"></el-option>
                         </el-select>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
-                    <el-form-item label="状态:" prop="name">
-                        <el-select v-model="jobForm.region" placeholder="请选择活动区域">
+                    <el-form-item label="状态:" prop="status">
+                        <el-select v-model="jobForm.status" placeholder="请选择活动区域">
                             <el-option label="区域一" value="shanghai"></el-option>
                             <el-option label="区域二" value="beijing"></el-option>
                         </el-select>
@@ -94,8 +94,8 @@
             </el-row>
          <el-card class="box-card" >
             <div slot="header" class="clearfix">
-                <el-form-item label="导师类别:" style="margin:8px 0;">
-                    <el-radio-group v-model="jobForm.resource">
+                <el-form-item label="导师类别:" style="margin:8px 0;" prop="tuthorCategory">
+                    <el-radio-group v-model="jobForm.tuthorCategory">
                         <el-radio label="0">硕士</el-radio>
                         <el-radio label="1">博士</el-radio>
                     </el-radio-group>
@@ -104,29 +104,29 @@
             <div class="content-radios">
                 <el-row style="padding-top:20px;padding-right:30px;">
                     <el-col :span="6">
-                        <el-form-item label="考试科目1:" prop="name">
-                            <el-input v-model="jobForm.name" class="maxwidth"></el-input>
+                        <el-form-item label="考试科目1:" prop="subjectOne">
+                            <el-input v-model="jobForm.subjectOne" class="maxwidth"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="6">
-                        <el-form-item label="考试科目2:" prop="region">
-                            <el-select v-model="jobForm.region" placeholder="请选择活动区域">
+                        <el-form-item label="考试科目2:" prop="subjectTwo">
+                            <el-select v-model="jobForm.subjectTwo" placeholder="请选择活动区域">
                                 <el-option label="区域一" value="shanghai"></el-option>
                                 <el-option label="区域二" value="beijing"></el-option>
                             </el-select>
                         </el-form-item>
                     </el-col>
                     <el-col :span="6">
-                        <el-form-item label="考试科目3:" prop="name">
-                            <el-select v-model="jobForm.region" placeholder="请选择活动区域">
+                        <el-form-item label="考试科目3:" prop="subjectThree">
+                            <el-select v-model="jobForm.subjectThree" placeholder="请选择活动区域">
                                 <el-option label="区域一" value="shanghai"></el-option>
                                 <el-option label="区域二" value="beijing"></el-option>
                             </el-select>
                         </el-form-item>
                     </el-col>
                     <el-col :span="6">
-                        <el-form-item label="考试科目4:" prop="name" v-if="jobForm.resource=='0'">
-                            <el-select v-model="jobForm.region" placeholder="请选择活动区域">
+                        <el-form-item label="考试科目4:" prop="subjectFour" v-if="jobForm.resource=='0'">
+                            <el-select v-model="jobForm.subjectFour" placeholder="请选择活动区域">
                                 <el-option label="区域一" value="shanghai"></el-option>
                                 <el-option label="区域二" value="beijing"></el-option>
                             </el-select>
@@ -135,42 +135,42 @@
                 </el-row>
                 <el-row>
                     <el-col :span="8">
-                        <el-form-item label="承担课程教学情况:" prop="name">
-                            <el-input v-model="jobForm.name" class="maxwidth"></el-input>
+                        <el-form-item label="承担课程教学情况:" prop="teachingSituation">
+                            <el-input v-model="jobForm.teachingSituation" class="maxwidth"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8">
-                        <el-form-item label-width="240px" label="已培养毕业研究生数量:" prop="region">
-                            <el-input v-model="jobForm.name" class="maxwidth"></el-input>
+                        <el-form-item label-width="240px" label="已培养毕业研究生数量:" prop="graduateStuden">
+                            <el-input v-model="jobForm.graduateStuden" class="maxwidth"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8">
-                        <el-form-item label-width="246px" label="在外单位兼职任导师情况:" prop="name">
-                            <el-input v-model="jobForm.name" class="maxwidth"></el-input>
-                        </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="8">
-                        <el-form-item label="在读研究生数量:" prop="name">
-                            <el-input v-model="jobForm.name" class="maxwidth"></el-input>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
-                        <el-form-item label-width="240px" label="学术组织任职及各类人才称号情况:" prop="region">
-                            <el-input v-model="jobForm.name" class="maxwidth"></el-input>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
-                        <el-form-item label-width="246px" label="是否有海外研学经历（3个月以上）:" prop="name">
-                            <el-input v-model="jobForm.name" class="maxwidth"></el-input>
+                        <el-form-item label-width="246px" label="在外单位兼职任导师情况:" prop="workingInAForeign">
+                            <el-input v-model="jobForm.workingInAForeign" class="maxwidth"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row>
                     <el-col :span="8">
-                        <el-form-item label="本单位行政职务:" prop="name">
-                            <el-input v-model="jobForm.name" class="maxwidth"></el-input>
+                        <el-form-item label="在读研究生数量:" prop="inGraduateSchool">
+                            <el-input v-model="jobForm.inGraduateSchool" class="maxwidth"></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="8">
+                        <el-form-item label-width="240px" label="学术组织任职及各类人才称号情况:" prop="positionsAndTitles">
+                            <el-input v-model="jobForm.positionsAndTitles" class="maxwidth"></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="8">
+                        <el-form-item label-width="246px" label="是否有海外研学经历（3个月以上）:" prop="OverseasExperience">
+                            <el-input v-model="jobForm.OverseasExperience" class="maxwidth"></el-input>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+                <el-row>
+                    <el-col :span="8">
+                        <el-form-item label="本单位行政职务:" prop="duty">
+                            <el-input v-model="jobForm.duty" class="maxwidth"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
@@ -187,15 +187,26 @@ export default {
         return {
             jobForm: {
                 picUrl: '',
-                name: '',
-                region: '',
-                date1: '',
-                date2: '',
-                delivery: false,
-                type: [],
-                resource: '0',
-                value: '',
-                desc: ''
+                workUnit:'',
+                joinInWorkDat:'',
+                technicalPost:'',
+                postGrade:'',
+                getTheTitleDate:'',
+                tuthorCategory:'',
+                teacherQualificationDate:'',
+                recruitStudentProfession:'',
+                researchDirection:'',
+                status:'',
+                subjectOne:'',
+                subjectTwo:'',
+                subjectThree:'',
+                subjectFour:'',
+                duty:'',
+                OverseasExperience:'',
+                positionsAndTitles:'',
+                inGraduateSchool:'',
+                graduateStuden:'',
+                workingInAForeign:'',
             },
             rules: {
                 name: [

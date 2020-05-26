@@ -22,8 +22,8 @@
         <div class="content1">
             <div class="content-upload">
                   <!-- <div class="uploadTip">图片尺寸为1024*600，大小不超过15M</div> -->
-                  <div :class="['imgbox',{'imgbox-v':!ruleForm.picUrl}]">
-                    <img :src="ruleForm.picUrl" alt>
+                  <div :class="['imgbox',{'imgbox-v':!ruleForm.picture}]">
+                    <img :src="ruleForm.picture" alt>
                   </div>
                   <el-upload
                     class="upload-demo"
@@ -50,8 +50,8 @@
                         </el-form-item>
                     </el-col>
                     <el-col :span="8">
-                        <el-form-item label="姓别:" prop="region">
-                            <el-select v-model="ruleForm.region" placeholder="请选择活动区域">
+                        <el-form-item label="姓别:" prop="sex">
+                            <el-select v-model="ruleForm.sex" placeholder="请选择活动区域">
                                 <el-option label="区域一" value="shanghai"></el-option>
                                 <el-option label="区域二" value="beijing"></el-option>
                             </el-select>
@@ -60,34 +60,16 @@
                 </el-row>
                 <el-row>
                     <el-col :span="8">
-                        <el-form-item label="民族:" prop="region">
-                            <el-select v-model="ruleForm.region" placeholder="请选择活动区域">
+                        <el-form-item label="民族:" prop="nation">
+                            <el-select v-model="ruleForm.nation" placeholder="请选择活动区域">
                                 <el-option label="区域一" value="shanghai"></el-option>
                                 <el-option label="区域二" value="beijing"></el-option>
                             </el-select>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8">
-                        <el-form-item label="政治面貌:" prop="region">
-                            <el-select v-model="ruleForm.region" placeholder="请选择活动区域">
-                                <el-option label="区域一" value="shanghai"></el-option>
-                                <el-option label="区域二" value="beijing"></el-option>
-                            </el-select>
-                        </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="8">
-                        <el-form-item label="国籍:" prop="region">
-                            <el-select v-model="ruleForm.region" placeholder="请选择活动区域">
-                                <el-option label="区域一" value="shanghai"></el-option>
-                                <el-option label="区域二" value="beijing"></el-option>
-                            </el-select>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
-                        <el-form-item label="籍贯:" prop="region">
-                            <el-select v-model="ruleForm.region" placeholder="请选择活动区域">
+                        <el-form-item label="政治面貌:" prop="politicsStatus">
+                            <el-select v-model="ruleForm.politicsStatus" placeholder="请选择活动区域">
                                 <el-option label="区域一" value="shanghai"></el-option>
                                 <el-option label="区域二" value="beijing"></el-option>
                             </el-select>
@@ -96,79 +78,98 @@
                 </el-row>
                 <el-row>
                     <el-col :span="8">
-                        <el-form-item label="身份证号:" prop="name">
-                            <el-input v-model="ruleForm.name" class="maxwidth"></el-input>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
-                        <el-form-item label="出生日期:" prop="region">
-                            <el-select v-model="ruleForm.region" placeholder="请选择活动区域">
+                        <el-form-item label="国籍:" prop="nationality">
+                            <el-select v-model="ruleForm.nationality" placeholder="请选择活动区域">
                                 <el-option label="区域一" value="shanghai"></el-option>
                                 <el-option label="区域二" value="beijing"></el-option>
                             </el-select>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8">
-                        <el-form-item label="年龄:" prop="name">
-                            <span>1000</span>
+                        <el-form-item label="籍贯:" prop="nativePlace">
+                            <el-select v-model="ruleForm.nativePlace" placeholder="请选择活动区域">
+                                <el-option label="区域一" value="shanghai"></el-option>
+                                <el-option label="区域二" value="beijing"></el-option>
+                            </el-select>
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row>
                     <el-col :span="8">
-                        <el-form-item label="邮编:" prop="name">
-                            <el-input v-model="ruleForm.name" class="maxwidth"></el-input>
+                        <el-form-item label="身份证号:" prop="IdCard">
+                            <el-input v-model="ruleForm.IdCard"  maxlength="18" class="maxwidth"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8">
-                        <el-form-item label="通讯地址:" prop="name">
-                            <el-input v-model="ruleForm.name" class="maxwidth"></el-input>
+                        <el-form-item label="出生日期:" prop="birth">
+                        <el-date-picker v-model="ruleForm.birth" type="date" format="yyyy-MM-dd" value-format="yyyy-MM-dd" @change='count' placeholder="选择日期"></el-date-picker>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8">
-                        <el-form-item label="手机号:" prop="name">
-                            <el-input v-model="ruleForm.name" class="maxwidth"></el-input>
-                        </el-form-item>
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col :span="8">
-                        <el-form-item label="电子信箱:" prop="name">
-                            <el-input v-model="ruleForm.name" class="maxwidth"></el-input>
-                        </el-form-item>
-                    </el-col>
-                    <el-col :span="8">
-                        <el-form-item label="办公电话:" prop="name">
-                            <el-input v-model="ruleForm.name" class="maxwidth"></el-input>
+                        <el-form-item label="年龄:" >
+                            <span >{{ruleForm.age}}</span>
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row>
                     <el-col :span="8">
-                        <el-form-item label="最高学历:" prop="name">
-                            <el-input v-model="ruleForm.name" class="maxwidth"></el-input>
+                        <el-form-item label="邮编:" prop="postcode">
+                            <el-input v-model="ruleForm.postcode" class="maxwidth"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8">
-                        <el-form-item label="最高学历所学专业:" prop="name">
-                            <el-input v-model="ruleForm.name" class="maxwidth"></el-input>
+                        <el-form-item label="通讯地址:" prop="mailingAddress">
+                            <el-input v-model="ruleForm.mailingAddress" class="maxwidth"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8">
-                        <el-form-item label="获得最高学历学校:" prop="name">
-                            <el-input v-model="ruleForm.name" class="maxwidth"></el-input>
+                        <el-form-item label="手机号:" prop="tel">
+                            <el-input v-model="ruleForm.tel" class="maxwidth" maxlength="11" ></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
                 <el-row>
                     <el-col :span="8">
-                        <el-form-item label="最高学位:" prop="name">
-                            <el-input v-model="ruleForm.name" class="maxwidth"></el-input>
+                        <el-form-item label="电子信箱:" prop="email">
+                            <el-input v-model="ruleForm.email" class="maxwidth"></el-input>
                         </el-form-item>
                     </el-col>
                     <el-col :span="8">
-                        <el-form-item label="获得高学历院校:" prop="name">
-                            <el-input v-model="ruleForm.name" class="maxwidth"></el-input>
+                        <el-form-item label="办公电话:" prop="officePhone">
+                            <el-input v-model="ruleForm.officePhone" class="maxwidth"></el-input>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+                <el-row>
+                    <el-col :span="8">
+                        <el-form-item label="最高学历:" prop="highestAcademicDegree">
+                           <el-select v-model="ruleForm.highestAcademicDegree" placeholder="请选择活动区域">
+                                <el-option label="区域一" value="shanghai"></el-option>
+                                <el-option label="区域二" value="beijing"></el-option>
+                            </el-select>                        </el-form-item>
+                    </el-col>
+                    <el-col :span="8">
+                        <el-form-item label="最高学历所学专业:" prop="profession">
+                            <el-input v-model="ruleForm.profession" class="maxwidth"></el-input>
+                        </el-form-item>
+                    </el-col>
+                    <el-col :span="8">
+                        <el-form-item label="获得最高学历院校:" prop="highestAcademicDegreeSchool">
+                            <el-input v-model="ruleForm.highestAcademicDegreeSchool" class="maxwidth"></el-input>
+                        </el-form-item>
+                    </el-col>
+                </el-row>
+                <el-row>
+                    <el-col :span="8">
+                        <el-form-item label="最高学位:" prop="educationBackground">
+                            <el-select v-model="ruleForm.educationBackground" placeholder="请选择活动区域">
+                                <el-option label="区域一" value="shanghai"></el-option>
+                                <el-option label="区域二" value="beijing"></el-option>
+                            </el-select>                         </el-form-item>
+                    </el-col>
+                    <el-col :span="8">
+                        <el-form-item label="获得高学位院校:" prop="educationBackgroundSchool">
+                            <el-input v-model="ruleForm.educationBackgroundSchool" class="maxwidth"></el-input>
                         </el-form-item>
                     </el-col>
                 </el-row>
@@ -178,36 +179,69 @@
 </template>
 <script>
 import {uploadFile } from '@/api/index';
+import util from '@/utils/check';
 export default {
     data() {
         return {
             imageUrl: '',
             ruleForm: {
-                picUrl:"",
                 name: '',
-                region: '',
-                date1: '',
-                date2: '',
+                birth: '',
+                age: '',
+                sex:'',
+                politicsStatus:'',
+                nationality:'',
+                nativePlace:'',
+                nation:'',
+                mailingAddress:'',
+                postcode:'',
+                officePhone:'',
+                tel:'',
+                email:'',
+                highestAcademicDegree:'',
+                profession:'',
+                highestAcademicDegreeSchool:'',
+                educationBackgroundSchool:'',
+                picture:'',
+                IdCard:'',
                 delivery: false,
-                type: [],
-                resource: '',
-                desc: ''
+
             },
             rules: {
                 name: [
                     { required: true, message: '请输入活动名称', trigger: 'blur' },
                     { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
                 ],
+                tel: [{ required: true, message: '请填写手机号', trigger: 'blur' },
+                      { validator: util.validMobilePhoneCallback, trigger: 'blur' }
+                ],
+                IdCard:[
+                    { required: true, message: '请填写身份证号', trigger: 'blur' },
+                      { validator: util.idCard, trigger: 'blur' }
+                ],
                 region: [{ required: true, message: '请选择活动区域', trigger: 'change' }],
                 date1: [{ type: 'date', required: true, message: '请选择日期', trigger: 'change' }],
                 date2: [{ type: 'date', required: true, message: '请选择时间', trigger: 'change' }],
                 type: [{ type: 'array', required: true, message: '请至少选择一个活动性质', trigger: 'change' }],
                 resource: [{ required: true, message: '请选择活动资源', trigger: 'change' }],
-                desc: [{ required: true, message: '请填写活动形式', trigger: 'blur' }]
             }
         };
     },
+    created(){
+         console.log(util)
+        },
     methods: {
+        // 根据返回的日期计算间隔
+             toAge(timeStamp) {
+                let birthDate = timeStamp.substr(0, 4);
+                let newDate = new Date().getFullYear();
+                return (newDate - parseInt(birthDate));
+            },
+        count(){
+ 		 this.ruleForm.age = this.toAge(this.ruleForm.birth);
+         console.log(this.ruleForm.birth)
+         console.log(this.ruleForm.age)
+        },
         beforeAvatarUpload(file) {
       const isJPG =
         file.type === "image/png" ||
@@ -231,7 +265,7 @@ export default {
       data.append("projectName", fileObj.name);
       console.log(data)
       uploadFile(data).then(res => {
-        this.ruleForm.picUrl = `${getFile}?id=${res.data.id}`;
+        this.ruleForm.picture = `${getFile}?id=${res.data.id}`;
       });
     },
         submitForm(formName) {

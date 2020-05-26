@@ -20,8 +20,8 @@ let  routerUrl={
                     title: '用户管理'
                 },
                 {
-                    index: 'dialog',
-                    title: '拖拽弹框'
+                    index: 'system',
+                    title: '系统管理'
                 }
             ]
         },

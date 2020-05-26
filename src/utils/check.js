@@ -219,15 +219,6 @@ u.replaceSocialCreditCode = function(value) {
         let reg = /[^0-9a-zA-Z]/g
         return value.replace(reg, "")
     }
-    //正则校验身份证号码
-u.validIdentity = function(value) {
-        let codeReg = /(^[1-9]\d{5}(18|19|([23]\d))\d{2}(((0[13578]|10|12)(0[1-9]|[12]\d|3[01]))|((0[469]|11)(0[1-9]|[12]\d|30))|(02(0[1-9]|[12]\d)))\d{3}[0-9Xx]$)|(^[1-9]\d{5}\d{2}(((0[13578]|10|12)(0[1-9]|[12]\d|3[01]))|((0[469]|11)(0[1-9]|[12]\d|30))|(02(0[1-9]|[12]\d)))\d{3}$)/
-        if (!codeReg.test(value)) {
-            return false
-        } else {
-            return true
-        }
-    }
     //校验邮箱地址
 u.validEmail = function(value) {
         let reg = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+((\.[a-zA-Z]{2,4}){1,2})$/
@@ -464,9 +455,9 @@ u.validatePhone = (rule, value, callback) => {
             }, 500)
         }
     }
-    // 身份证号验证
+    // 身份证号验证y
 u.idCard = (rule, value, callback) => {
-        let regIdNo = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/
+        let regIdNo = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x|Y|y)$)/
         if (!regIdNo.test(value)) {
             callback(new Error('身份证号格式不正确'))
         } else {
@@ -735,7 +726,7 @@ u.getNowFormatDate = () => {
     //小数点前4位小数点后2位 不为0
     u.getMoney=(rule, value, callback)=>{
         if (/^\s*$/.test(value)) {
-            callback() 
+            callback()
         }else{
             if (!/^(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*))$/.test(value)) {
                 return callback(new Error('请输入大于0的数'))
@@ -757,7 +748,7 @@ u.getNowFormatDate = () => {
      //小数点前4位小数点后2位 +0
      u.getMoneyf=(rule, value, callback)=>{
         if (/^\s*$/.test(value)) {
-            callback() 
+            callback()
         }else{
             if (!/^\d+(\.\d+)?$/.test(value)) {
                 return callback(new Error('请输入大于等于0的数'))
