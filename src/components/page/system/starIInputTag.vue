@@ -8,7 +8,7 @@ created(){   字符串转数组，定义在父组件
 },
 -->
 <template>
-	<div>
+	<div style="line-height: 48px;">
 		<el-tag
             v-for="(tag,index) in dynamicTags"
             :key="index" closable size="medium"
@@ -21,8 +21,10 @@ created(){   字符串转数组，定义在父组件
                 type="text" v-model="words"
                 v-if="index==num"
                 ref="editInput"
+				@click.stop=""
                 @keyup.enter="handleInput(tag,index)"
-                @blur="handleInput(tag,index)">
+                @blur="handleInput(tag,index)"
+				:style="{width:texts(words)}" maxlength="29" >
 		</el-tag>
 		<el-input
             class="input-new-tag"
@@ -83,6 +85,16 @@ created(){   字符串转数组，定义在父组件
 				},
 				set(tagList) {
 					this.$emit('input', tagList);
+				}
+			},
+			texts () {
+				return function (value) {
+					console.log(value)
+					if (value == '' || value == 0) {
+					return '50px'
+					} else {
+					return String(value).length * 13 + 'px'
+					}
 				}
 			}
 		},
@@ -151,8 +163,9 @@ created(){   字符串转数组，定义在父组件
 		vertical-align: bottom;
 	}
 	.custom_input {
-		width: 80px;
-		height: 16px;
+		width: 50px;
+	    height: 28px;
+        line-height: 28px;
 		outline: none;
 		border: transparent;
 		background-color: transparent;
@@ -160,7 +173,6 @@ created(){   字符串转数组，定义在父组件
 		color: #B59059;
 	}
 	.el-tag--medium{
-	   margin-bottom: 15px;
 	   margin-left: 11px;
 	}
 </style>

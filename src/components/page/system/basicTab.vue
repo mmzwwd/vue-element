@@ -6,7 +6,7 @@
             </div>
         </div>
         <el-form ref="form" :model="form" label-width="180px" style="width:95%;" >
-            <el-form-item label="姓别:">
+            <el-form-item label="姓别:" >
                 <star-input-tag v-model="dynamicTags" :labeltype="'姓别'" theme="新增" />
             </el-form-item>
              <el-form-item label="民族:">
@@ -38,7 +38,7 @@ import starInputTag from './starIInputTag'
     data() {
       return {
         form:{},
-        dynamicTags: ['标签一', '标签tyhertgwefweifuyehfdfeyureiufsdfjiwoeurf3哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇嗡嗡嗡嗡嗡嗡哇哇哇哇哇哇哇哇哇哇哇哇哇哇oisfdoeifjeorieferierifeifjrefjejfeiowfwoefrweorf二', '标签三','标签一', '标签二', '标签三'],
+        dynamicTags: ['标签一', '标签哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇嗡嗡嗡嗡嗡嗡哇哇哇哇哇哇哇哇哇哇哇哇哇哇oisfdoeifjeorieferierifeifjrefjejfeiowfwoefrweorf二', '标签三','标签一', '标签二', '标签三'],
         dynamicTags1: ['标签一', '标签二', '标签三'],
         dynamicTags2: ['标签一', '标签二', '标签三'],
         dynamicTags3: ['标签一', '标签二', '标签三'],
@@ -70,6 +70,11 @@ import starInputTag from './starIInputTag'
     }
   }
 </script>
+<style>
+ .smbasicTab .el-form-item__label{
+  line-height: 48px;
+  }
+</style>
 <style  scoped>
 .smbasicTab {
     height:777px;
