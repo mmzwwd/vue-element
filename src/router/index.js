@@ -35,6 +35,17 @@ export default new Router({
                     meta: { title: '系统管理' }
                 },
                 {
+                    path: '/fileFolder',
+                    component: () => import(/* webpackChunkName: "icon" */ '../components/page/fileFolder.vue'),
+                    meta: { title: '档案馆' }
+                },
+                {
+                    // vue-schart组件
+                    path: '/charts',
+                    component: () => import(/* webpackChunkName: "chart" */ '../components/page/BaseCharts.vue'),
+                    meta: { title: '统计中心' }
+                },
+                {
                     path: '/icon',
                     component: () => import(/* webpackChunkName: "icon" */ '../components/page/Icon.vue'),
                     meta: { title: '自定义图标' }
@@ -71,12 +82,6 @@ export default new Router({
                     path: '/upload',
                     component: () => import(/* webpackChunkName: "upload" */ '../components/page/Upload.vue'),
                     meta: { title: '文件上传' }
-                },
-                {
-                    // vue-schart组件
-                    path: '/charts',
-                    component: () => import(/* webpackChunkName: "chart" */ '../components/page/BaseCharts.vue'),
-                    meta: { title: 'schart图表' }
                 },
                 {
                     // 拖拽列表组件

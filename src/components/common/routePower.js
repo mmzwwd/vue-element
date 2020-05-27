@@ -26,10 +26,26 @@ let  routerUrl={
             ]
         },
         {
+            icon: 'el-icon-folder-opened',
+            index: '3',
+            title: '档案夹',
+            subs: [
+                {
+                    index: 'fileFolder',
+                    title: '档案馆'
+                },
+                {
+                    index: 'charts',
+                    title: '统计中心'
+                }
+            ]
+        },
+        {
             icon: 'el-icon-lx-emoji',
             index: 'icon',
             title: '自定义图标'
         },
+
     ],
     manage: [
         {
