@@ -1,17 +1,17 @@
 <template>
   <div class="archives">
-    <el-tabs type="border-card">
-      <el-tab-pane label="基本信息">
-        <basic-tab> </basic-tab>
+    <el-tabs type="border-card"  v-model="systemName"  @tab-click="handleClick" >
+      <el-tab-pane label="基本信息" name="basic" :key="'basic'">
+        <basic-tab v-if="systemName=='basic'"> </basic-tab>
       </el-tab-pane>
-      <el-tab-pane label="职业信息">
-        <vocation-tab></vocation-tab>
+      <el-tab-pane label="职业信息"  name="occupation" :key="'occupation'" >
+        <vocation-tab v-if="systemName=='occupation'"></vocation-tab>
       </el-tab-pane>
-      <el-tab-pane label="科研信息">
-        <scienc-tab></scienc-tab>
+      <el-tab-pane label="科研信息" name="section" :key="'section'">
+        <scienc-tab  v-if="systemName=='section'"></scienc-tab>
       </el-tab-pane>
-      <el-tab-pane label="学书信息">
-        <student-tab></student-tab>
+      <el-tab-pane label="学生信息" name="student" :key="'student'">
+        <student-tab  v-if="systemName=='student'"></student-tab>
       </el-tab-pane>
     </el-tabs>
   </div>
@@ -27,11 +27,18 @@ export default {
   components: { basicTab,vocationTab,sciencTab,studentTab },
   name: '',
   data(){
-    return {}
+    return {
+            systemName: 'basic',
+
+    }
   },
   created(){},
   mounted(){},
-  methods: {}
+  methods: {
+    handleClick(tab) {
+    }
+  }
+
 }
 </script>
 <style  >

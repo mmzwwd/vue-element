@@ -8,7 +8,7 @@
          <el-card class="box-card">
             <div slot="header" class="clearfix">
                 <span style="margin: 0 10px;">博士生</span>
-                <el-button class="button-el"   type="primary" plain> 新增 </el-button>
+                <el-button class="button-el"  @click="dialogVisible = true" type="primary" plain> 新增 </el-button>
                 <el-button class="button-el"   type="primary" plain> 导出 </el-button>
             </div>
             <!-- <div v-for="o in 4" :key="o" class="text item">
@@ -73,6 +73,114 @@
                     </el-table-column>
                 </el-table>
         </el-card>
+
+        <el-dialog title="添加学书信息"  :visible.sync="dialogVisible" width="690px" >
+             <div class="title-form">
+                <el-tabs v-model="learnName" @tab-click="handleClick">
+                  <el-tab-pane label="单个添加" name="single"></el-tab-pane>
+                  <el-tab-pane label="批量导入" name="batch"></el-tab-pane>
+                </el-tabs>
+             </div>
+             <el-form v-if="learnName=='single'"  :model="learnForm" :rules="learn" ref="learnForm" label-width="100px"   class="demo-ruleForm" >
+                  <el-row>
+                    <el-col :span="12">
+                        <el-form-item label="学生编码:" prop="name">
+                            <span>123123442</span>
+                        </el-form-item>
+                    </el-col>
+                  </el-row>
+                 <el-row>
+                    <el-col :span="12">
+                        <el-form-item label="学生姓名:" prop="name">
+                            <el-input v-model="learnForm.name" class="maxwidth"></el-input>
+                        </el-form-item>
+                    </el-col>
+                     <el-col :span="12">
+                        <el-form-item label="类型:" prop="sex">
+                            <el-select v-model="learnForm.sex" placeholder="请选择活动区域">
+                                <el-option label="区域一" value="shanghai"></el-option>
+                                <el-option label="区域二" value="beijing"></el-option>
+                            </el-select>
+                        </el-form-item>
+                    </el-col>
+                  </el-row>
+                  <el-row>
+                    <el-col :span="12">
+                        <el-form-item label="学习方式:" prop="name">
+                              <el-select v-model="learnForm.sex" placeholder="请选择活动区域">
+                                <el-option label="区域一" value="shanghai"></el-option>
+                                <el-option label="区域二" value="beijing"></el-option>
+                            </el-select>                        </el-form-item>
+                    </el-col>
+                     <el-col :span="12">
+                        <el-form-item label="状态:" prop="sex">
+                            <el-select v-model="learnForm.sex" placeholder="请选择活动区域">
+                                <el-option label="区域一" value="shanghai"></el-option>
+                                <el-option label="区域二" value="beijing"></el-option>
+                            </el-select>
+                        </el-form-item>
+                    </el-col>
+                  </el-row>
+                  <el-row>
+                    <el-col :span="12">
+                        <el-form-item label="国籍:" prop="name">
+                              <el-select v-model="learnForm.sex" placeholder="请选择活动区域">
+                                <el-option label="区域一" value="shanghai"></el-option>
+                                <el-option label="区域二" value="beijing"></el-option>
+                            </el-select>                        </el-form-item>
+                    </el-col>
+                     <el-col :span="12">
+                        <el-form-item label="民族:" prop="sex">
+                            <el-select v-model="learnForm.sex" placeholder="请选择活动区域">
+                                <el-option label="区域一" value="shanghai"></el-option>
+                                <el-option label="区域二" value="beijing"></el-option>
+                            </el-select>
+                        </el-form-item>
+                    </el-col>
+                  </el-row>
+                  <el-row>
+                    <el-col :span="12">
+                        <el-form-item label="专业:" prop="name">
+                              <el-select v-model="learnForm.sex" placeholder="请选择活动区域">
+                                <el-option label="区域一" value="shanghai"></el-option>
+                                <el-option label="区域二" value="beijing"></el-option>
+                            </el-select>                        </el-form-item>
+                    </el-col>
+                     <el-col :span="12">
+                        <el-form-item label="是否在职:" prop="sex">
+                            <el-select v-model="learnForm.sex" placeholder="请选择活动区域">
+                                <el-option label="区域一" value="shanghai"></el-option>
+                                <el-option label="区域二" value="beijing"></el-option>
+                            </el-select>
+                        </el-form-item>
+                    </el-col>
+                  </el-row>
+                  <el-row>
+                    <el-col :span="12">
+                        <el-form-item label="学位类型:" prop="name">
+                              <el-select v-model="learnForm.sex" placeholder="请选择活动区域">
+                                <el-option label="区域一" value="shanghai"></el-option>
+                                <el-option label="区域二" value="beijing"></el-option>
+                            </el-select>                        </el-form-item>
+                    </el-col>
+                     <el-col :span="12">
+                        <el-form-item label="入学时间:" prop="sex">
+                            <el-select v-model="learnForm.sex" placeholder="请选择活动区域">
+                                <el-option label="区域一" value="shanghai"></el-option>
+                                <el-option label="区域二" value="beijing"></el-option>
+                            </el-select>
+                        </el-form-item>
+                    </el-col>
+                  </el-row>
+              </el-form>
+              <div v-else>
+                 <el-button type="primary" @click="dialogVisible = false">导入</el-button>
+              </div>
+            <span slot="footer" class="dialog-footer">
+          <el-button @click="dialogVisible = false">取 消</el-button>
+          <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+        </span>
+      </el-dialog>
   </div>
 </template>
 
@@ -81,6 +189,10 @@ export default {
   name: '',
   data(){
     return {
+      learnName:'single',
+        dialogVisible:true,
+        learnForm:{},
+        learn:{},
          tableData: [{
           date: '2016-05-03',
           name: '王小虎',
@@ -114,10 +226,21 @@ export default {
   },
   components: {},
   created(){},
-  mounted(){},
-  methods: {}
+  mounted(){
+     console.log(23333333333354452323)
+},
+  methods: {
+     handleClick(tab, event) {
+        console.log(tab, event);
+      }
+  }
 }
 </script>
+<style>
+ .studentTab .el-form-item{
+   margin-bottom: 20px;
+}
+</style>
 <style  scoped>
 .studentTab {
     margin-top: 10px;
@@ -144,6 +267,16 @@ export default {
 }
 .top-card{
   margin-top: 60px;
+}
+.maxwidth {
+    max-width: 215px;
+}
+.demo-ruleForm{
+  width: 600px;
+  margin: 0 auto;
+}
+.title-form{
+  width: 616px;
 }
 </style>
 
