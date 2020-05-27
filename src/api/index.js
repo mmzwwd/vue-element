@@ -15,13 +15,15 @@ function login (data) {
 function uploadFile (data) {
     return http('http://test2.mumzone.cn/egg_public/upload/uploadFile?token=SEhULVNFQ1RFVDoxNTkwMzkyMDEyOkZFNzA5NjZFRDQwMDAwMDBDODAwMDAwMDAwMUFFMDAw', data, 'POST')
 }
-
+function labelname (data) {
+    return http('https://rap2api.mumzone.cn//app/mock/45/GET/labelname', data, )
+}
 function roleTree (data) {
     return http(url.roleTree, data, 'POST')
 }
-
 export {
     login,
     roleTree,
     uploadFile,
+    labelname,
 }

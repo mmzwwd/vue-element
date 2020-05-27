@@ -1,59 +1,66 @@
 <template>
-    <div class="smbasicTab">
-        <div class="head">
+  <div class='vocationTab'>
+       <div class="head">
             <div class="head-left">
-                <p style="line-height: 40px;font-size: 18px;">基本信息下拉菜单维护</p>
+                <p style="line-height: 40px;font-size: 18px;">教师职业信息下拉菜单维护</p>
             </div>
         </div>
-        <el-form ref="form" :model="form" label-width="180px" style="width:95%;" >
-            <el-form-item label="姓别:" >
-                <star-input-tag v-model="dynamicTags" :labeltype="'labelname'" theme="新增" />
+        <el-form ref="form" :model="jobForm" label-width="180px" style="width:95%;" >
+            <el-form-item label="岗位等级:" >
+                <star-input-tag v-model="dynamicTags" :labeltype="'姓别'" theme="新增" />
             </el-form-item>
-             <el-form-item label="民族:">
+             <el-form-item label="职称:">
                   <star-input-tag v-model="dynamicTags1" :labeltype="'民族'" theme="新增" />
             </el-form-item>
-             <el-form-item label="国籍:">
+             <el-form-item label="招生专业:">
                  <star-input-tag v-model="dynamicTags2" :labeltype="'国籍'" theme="新增" />
             </el-form-item>
-            <el-form-item label="籍贯:">
+            <el-form-item label="状态:">
                  <star-input-tag v-model="dynamicTags2" :labeltype="'籍贯'" theme="新增" />
             </el-form-item>
-             <el-form-item label="政治面貌:">
+             <el-form-item label="考试科目1:">
                   <star-input-tag v-model="dynamicTags3" :labeltype="'政治面貌'" theme="新增" />
             </el-form-item>
-             <el-form-item label="最高学历:">
+             <el-form-item label="考试科目2:">
                 <star-input-tag v-model="dynamicTags3" :labeltype="'最高学历'" theme="新增" />
             </el-form-item>
-             <el-form-item label="最高学位:">
+             <el-form-item label="考试科目3:">
                <star-input-tag v-model="dynamicTags3" :labeltype="'最高学位'" theme="新增" />
             </el-form-item>
+             <el-form-item label="考试科目4:">
+                 <star-input-tag v-model="dynamicTags2" :labeltype="'籍贯'" theme="新增" />
+            </el-form-item>
         </el-form>
-    </div>
+  </div>
 </template>
 
 <script>
 import starInputTag from './starIInputTag'
-  export default {
- components: { starInputTag },
-    data() {
-      return {
-        form:{},
+
+export default {
+  name: 'vocationTab',
+  components: { starInputTag },
+  data(){
+    return {
+        jobForm:{},
         dynamicTags: ['标签一', '标签哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇嗡嗡嗡嗡嗡嗡哇哇哇哇哇哇哇哇哇哇哇哇哇哇oisfdoeifjeorieferierifeifjrefjejfeiowfwoefrweorf二', '标签三','标签一', '标签二', '标签三'],
         dynamicTags1: ['标签一', '标签二', '标签三'],
         dynamicTags2: ['标签一', '标签二', '标签三'],
         dynamicTags3: ['标签一', '标签二', '标签三'],
-      };
-    },
-    methods: {}
-  }
+    }
+  },
+  created(){},
+  mounted(){},
+  methods: {}
+}
 </script>
 <style>
- .smbasicTab .el-form-item__label{
+ .vocationTab .el-form-item__label{
   line-height: 48px;
   }
 </style>
 <style  scoped>
-.smbasicTab {
+.vocationTab {
     height:777px;
 }
 .head {

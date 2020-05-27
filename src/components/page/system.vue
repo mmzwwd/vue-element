@@ -19,7 +19,7 @@
 
 <script>
 import basicTab from "./system/basicTab";
-import vocationTab from "./archives/vocationTab";
+import vocationTab from "./system/vocationTab";
 import sciencTab from "./archives/sciencTab";
 import studentTab from "./archives/studentTab";
 
