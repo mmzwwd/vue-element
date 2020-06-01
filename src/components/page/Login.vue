@@ -180,7 +180,12 @@ export default {
                 if (valid) {
                     Cookies.set('theme',1)
                     this.$message.success('登录成功');
+                    var now = new Date();
+                    var time = now.getTime() + 1000*60*30;
+                    console.log(time)
+                    //{ expires:new Date(time) }
                     localStorage.setItem('ms_username', this.param.username);
+                    Cookies.set('ms_username',this.param.username)
                     this.$router.push('/');
                 } else {
                     this.$message.error('请输入账号和密码');

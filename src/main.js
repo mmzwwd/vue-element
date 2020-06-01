@@ -10,6 +10,7 @@ import './assets/css/icon.css';
 import './components/common/directives';
 import 'babel-polyfill';
 import axios from 'axios';
+import Cookies from "js-cookie";
 
 Vue.config.productionTip = false;
 Vue.use(VueI18n);
@@ -44,7 +45,7 @@ Vue.prototype.resetSetItem = function (key, newVal) {
 //使用钩子函数对路由进行权限跳转
 router.beforeEach((to, from, next) => {
     document.title = `${to.meta.title} | 中国地质`;
-    const role = localStorage.getItem('ms_username');
+    const role = Cookies.get('ms_username');
     if (!role && to.path !== '/login') {
         next('/login');
     } else if (to.meta.permission) {

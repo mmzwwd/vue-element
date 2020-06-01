@@ -28,7 +28,7 @@ function endLoading() {
 }
 /**************************loadingEnd************************ */
 function signOut () {
-    Cookies.remove(process.env.COOKIE_NAME + "_companyName");
+    Cookies.remove('ms_username');
     location.reload();
   }
 /**************************pushLoadingStart************************ */
@@ -62,7 +62,7 @@ error => {
                 signOut()
               })
               .catch(() => {
-                signOut()         
+                signOut()
               });
           break
         case 404:
@@ -85,7 +85,7 @@ const http = (url, data, method = 'GET', responseType = 'json') => {
     return new Promise((resolve, reject) => {
         // let token = store.state.token  token: 'token'
         let obj = {
-           
+
         }
         if (method == 'GET') {
             obj = Object.assign(obj, data)

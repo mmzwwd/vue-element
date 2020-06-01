@@ -51,6 +51,7 @@
 </template>
 <script>
 import bus from '../common/bus';
+import Cookies from "js-cookie";
 export default {
     data() {
         return {
@@ -71,6 +72,7 @@ export default {
         handleCommand(command) {
             if (command == 'loginout') {
                 localStorage.removeItem('ms_username');
+                Cookies.remove('ms_username');
                 this.$router.push('/login');
             }
         },
@@ -130,7 +132,7 @@ export default {
     line-height: 70px;
 }
 .collapse-btn:hover {
-    background: #8CC4FC		 !important; 
+    background: #8CC4FC		 !important;
 }
 .header .logo {
     float: left;
