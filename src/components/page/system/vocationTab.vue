@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import starInputTag from './starIInputTag'
+import starInputTag from './starIInputTag1'
 
 export default {
   name: 'vocationTab',

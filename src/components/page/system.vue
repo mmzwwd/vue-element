@@ -20,8 +20,8 @@
 <script>
 import basicTab from "./system/basicTab";
 import vocationTab from "./system/vocationTab";
-import sciencTab from "./archives/sciencTab";
-import studentTab from "./archives/studentTab";
+import sciencTab from "./system/sciencTab";
+import studentTab from "./system/studentTab";
 
 export default {
   components: { basicTab,vocationTab,sciencTab,studentTab },

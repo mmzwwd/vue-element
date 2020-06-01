@@ -7,9 +7,9 @@
         </div>
         <el-form ref="form" :model="form" label-width="180px" style="width:95%;" >
             <el-form-item label="姓别:" >
-                <star-input-tag v-model="dynamicTags" :labeltype="'labelname'" theme="新增" />
+                <star-input-tag v-model="tableData" :labeltype="'labelname'" theme="新增" />
             </el-form-item>
-             <el-form-item label="民族:">
+             <!-- <el-form-item label="民族:">
                   <star-input-tag v-model="dynamicTags1" :labeltype="'民族'" theme="新增" />
             </el-form-item>
              <el-form-item label="国籍:">
@@ -26,18 +26,28 @@
             </el-form-item>
              <el-form-item label="最高学位:">
                <star-input-tag v-model="dynamicTags3" :labeltype="'最高学位'" theme="新增" />
-            </el-form-item>
+            </el-form-item> -->
         </el-form>
     </div>
 </template>
 
 <script>
-import starInputTag from './starIInputTag'
+import starInputTag from './starIInputTag1'
   export default {
  components: { starInputTag },
     data() {
       return {
         form:{},
+        tableData: [{
+          date: 2,
+          name: '王小虎',
+        }, {
+          date: 3,
+          name: '王虎',
+        }, {
+          date: 3,
+          name: '虎',
+        },],
         dynamicTags: ['标签一', '标签哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇嗡嗡嗡嗡嗡嗡哇哇哇哇哇哇哇哇哇哇哇哇哇哇oisfdoeifjeorieferierifeifjrefjejfeiowfwoefrweorf二', '标签三','标签一', '标签二', '标签三'],
         dynamicTags1: ['标签一', '标签二', '标签三'],
         dynamicTags2: ['标签一', '标签二', '标签三'],

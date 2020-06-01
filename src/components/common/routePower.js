@@ -53,6 +53,21 @@ let  routerUrl={
             index: 'dashboard',
             title: '首页'
         },
+        {
+            icon: 'el-icon-setting',
+            index: '2',
+            title: '管理中心',
+            subs: [
+                {
+                    index: 'manageCenter',
+                    title: '用户管理'
+                },
+                {
+                    index: 'system',
+                    title: '系统管理'
+                }
+            ]
+        },
     ],
     superManage: [
         {

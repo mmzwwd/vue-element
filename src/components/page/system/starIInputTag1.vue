@@ -9,14 +9,13 @@ created(){   字符串转数组，定义在父组件
 -->
 <template>
 	<div style="line-height: 48px;">
-		<div   v-for="(tag,index) in dynamicTags"
-            :key="index" style="display: inline-block;">
-		<el-tag   v-if="tag.date==2"
-           closable size="medium"
+		<el-tag
+            v-for="(tag,index) in dynamicTags"
+            :key="index" closable size="medium"
             :disable-transitions="false"
             @click="editTag(tag,index)"
             @close="handleClose(tag)">
-			<span v-if="index!=num">{{tag.name}}</span>
+			<span v-if="index!=num">{{tag}}</span>
 			<input
                 class="custom_input"
                 type="text" v-model="words"
@@ -27,8 +26,6 @@ created(){   字符串转数组，定义在父组件
                 @blur="handleInput(tag,index)"
 				:style="{width:texts(words)}" maxlength="29" >
 		</el-tag>
-		<el-tag v-else style="margin-left: 11px;" size="medium">{{tag.name}}</el-tag>
-			</div>
 		<el-input
             class="input-new-tag"
             v-if="inputVisible"
@@ -101,13 +98,7 @@ created(){   字符串转数组，定义在父组件
 				}
 			}
 		},
-		mounted(){
-           this.aa()
-		},
 		methods: {
-			aa(){
-			console.log(this.dynamicTags)
-			},
 			// 数组去重
 			unique(arr) {
 				let x = new Set(arr);
@@ -115,6 +106,7 @@ created(){   字符串转数组，定义在父组件
 			},
 			handleClose(tag) {
 				console.log(tag)
+				console.log(this.labeltypes)
 				this.dynamicTags.splice(this.dynamicTags.indexOf(tag), 1);
 			},
 			showInput() {
@@ -125,15 +117,11 @@ created(){   字符串转数组，定义在父组件
 			},
 			handleInputConfirm() {
 				console.log('新增')
-				let inputValue = {
-					name:this.inputValue,
-					date: 2,
-                 }
+				let inputValue = this.inputValue;
 				if (inputValue) {
 					this.dynamicTags.push(inputValue);
 				}
-				this.dynamicTags =this.dynamicTags;
-				console.log(this.dynamicTags)
+				this.dynamicTags = this.unique(this.dynamicTags);
 				this.inputVisible = false;
 				this.inputValue = '';
 			},
@@ -143,15 +131,16 @@ created(){   字符串转数组，定义在父组件
 				this.$nextTick(_ => {
 					this.$refs.editInput[0].focus();
 				});
-				this.words = tag.name;
+				this.words = tag;
 			},
 			handleInput(tag, index) {
+				console.log(1111111111111111)
 				let words = this.words;
 				if (words) {
-					this.dynamicTags[index].name = words;
+					this.dynamicTags[index] = words;
 				}
-				this.dynamicTags = this.dynamicTags;
-			    this.words = '';
+				this.dynamicTags = this.unique(this.dynamicTags);
+				this.words = '';
 				this.num = -1;
 			}
 		}
