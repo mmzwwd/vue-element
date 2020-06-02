@@ -101,8 +101,8 @@ created(){   字符串转数组，定义在父组件
 		methods: {
 			// 数组去重
 			unique(arr) {
-				let x = new Set(arr);
-				return [...x];
+			const res = new Map();
+			return arr.filter((arr) => !res.has(arr.id) && res.set(arr.id, 1))
 			},
 			handleClose(tag) {
 				console.log(tag)

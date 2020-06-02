@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import starInputTag from './starIInputTag1'
+import starInputTag from './starIInputTag'
   export default {
  components: { starInputTag },
     data() {

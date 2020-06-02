@@ -33,19 +33,20 @@
                     <i class="el-icon-s-custom"></i>
                 </div>
                 <!-- 用户名下拉菜单 -->
-                <el-dropdown class="user-name" trigger="click" @command="handleCommand">
+                <!-- <el-dropdown class="user-name" trigger="click" @command="handleCommand">
                     <span class="el-dropdown-link">
                         {{username}}
-                        <!-- <i class="el-icon-caret-bottom"></i> -->
+                        <i class="el-icon-caret-bottom"></i>
                     </span>
-                    <!-- <el-dropdown-menu slot="dropdown">
+                    <el-dropdown-menu slot="dropdown">
                          <router-link to="/tabs">
                             <el-dropdown-item>个人中心</el-dropdown-item>
                         </router-link>
                         <el-dropdown-item divided command="loginout">退出登录</el-dropdown-item>
-                    </el-dropdown-menu> -->
-                </el-dropdown>
-                <el-button type="text" @click="LogOut" style="width:100px;color:#fff;margin-left: 10px;">退出</el-button>
+                    </el-dropdown-menu>
+                </el-dropdown> -->
+                 <el-button type="text"  style="margin-left:4px;color:#fff;font-size: 14px;">{{username}}</el-button>
+                <el-button type="text" @click="LogOut" style="width:100px;color:#fff;margin-left: 10px;font-size: 14px;">退出</el-button>
             </div>
 
         </div>

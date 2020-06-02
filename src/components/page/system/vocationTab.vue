@@ -43,7 +43,7 @@ export default {
   data(){
     return {
         jobForm:{},
-        dynamicTags: ['标签一', '标签哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇嗡嗡嗡嗡嗡嗡哇哇哇哇哇哇哇哇哇哇哇哇哇哇oisfdoeifjeorieferierifeifjrefjejfeiowfwoefrweorf二', '标签三','标签一', '标签二', '标签三'],
+        dynamicTags: ['标签一', '标签三','标签一', '标签二', '标签三'],
         dynamicTags1: ['标签一', '标签二', '标签三'],
         dynamicTags2: ['标签一', '标签二', '标签三'],
         dynamicTags3: ['标签一', '标签二', '标签三'],

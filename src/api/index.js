@@ -21,9 +21,13 @@ function labelname (data) {
 function roleTree (data) {
     return http(url.roleTree, data, 'POST')
 }
+function save (data) {
+    return http(url.save, data, 'POST')
+}
 export {
     login,
     roleTree,
     uploadFile,
     labelname,
+    save,
 }

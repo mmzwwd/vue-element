@@ -23,9 +23,9 @@ created(){   字符串转数组，定义在父组件
                 v-if="index==num"
                 ref="editInput"
 				@click.stop=""
-                @keyup.enter="handleInput(tag,index)"
+                @keyup.enter="$event.target.blur"
                 @blur="handleInput(tag,index)"
-				:style="{width:texts(words)}" maxlength="29" >
+				:style="{width:texts(words)}" maxlength="50" >
 		</el-tag>
 		<el-tag v-else style="margin-left: 11px;" size="medium">{{tag.name}}</el-tag>
 			</div>
@@ -35,7 +35,8 @@ created(){   字符串转数组，定义在父组件
             v-model="inputValue"
             ref="saveTagInput"
             size="small"
-            @keyup.enter.native="handleInputConfirm"
+			maxlength="50"
+            @keyup.enter.native="$event.target.blur"
             @blur="handleInputConfirm">
 		</el-input>
 		<el-button
@@ -114,7 +115,7 @@ created(){   字符串转数组，定义在父组件
 				return [...x];
 			},
 			handleClose(tag) {
-				console.log(tag)
+				console.log('删除')
 				this.dynamicTags.splice(this.dynamicTags.indexOf(tag), 1);
 			},
 			showInput() {
@@ -146,6 +147,7 @@ created(){   字符串转数组，定义在父组件
 				this.words = tag.name;
 			},
 			handleInput(tag, index) {
+				console.log('修改')
 				let words = this.words;
 				if (words) {
 					this.dynamicTags[index].name = words;
