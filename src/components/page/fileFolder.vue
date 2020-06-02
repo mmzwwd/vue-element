@@ -31,7 +31,7 @@
                     </el-col>
                     <el-col :span="6">
                             <el-button type="primary" icon="el-icon-search" style="margin-left:50px;">搜索</el-button>
-                            <el-button type="primary" icon="el-icon-search" style="margin-left:50px;">高级搜索</el-button>
+                            <el-button type="primary" icon="el-icon-search" style="margin-left:50px;"  @click="dialogVisible = true">高级搜索</el-button>
                     </el-col>
                 </el-row>
                  <el-row>
@@ -106,6 +106,33 @@
                 <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage" :page-sizes="[20,30]" :page-size="pageSize" layout="total, sizes, prev, pager, next, jumper" :total="totalItems"></el-pagination>
               </div>
         </el-card>
+
+        <el-dialog
+          title="提示"
+          :visible.sync="dialogVisible"
+          width="710px">
+           <div v-for="(item,index) in seniorData" class="dialog-dev">
+                <el-select v-model="item.option" class="dialog-select">
+                    <el-option label="区域一" value="shanghai"></el-option>
+                    <el-option label="区域二" value="beijing"></el-option>
+                </el-select>
+                <el-select v-model="item.range" class="dialog-select1">
+                    <el-option label="等于" value="shanghai"></el-option>
+                    <el-option label="大于" value="beijing"></el-option>
+                    <el-option label="小于" value="beijing"></el-option>
+                </el-select>
+                <el-input class="dialog-input"  v-model="item.content" size="small" ></el-input>
+                <span>
+                <i class="el-icon-circle-close dialog-icon"  @click="highDdelete(index)" ></i>
+                </span>
+          </div>
+          <div >
+              <el-button type="primary" @click="highAdd()" icon="el-icon-plus" style="margin: 30px 0 0 220px;width: 120px;"></el-button>
+          </div>
+          <span slot="footer" class="dialog-footer">
+            <el-button type="primary" @click="dialogVisible = false,highSee()">搜索</el-button>
+          </span>
+        </el-dialog>
   </div>
 </template>
 
@@ -114,11 +141,42 @@ export default {
   name: 'fileFolder',
   data(){
     return {
+      dialogVisible: false,
       keyword:'',
       region:'',
       pageSize: 10,
       totalItems: 0,
       currentPage: 1,
+      seniorDatafit:[
+        {
+        option:"",
+        range:"",
+        content:""
+        },
+        {
+          option:"",
+          range:"",
+          content:""
+        },
+        {
+          option:"",
+          range:"",
+          content:""
+        }
+      ],
+      seniorData:[{
+        option:"",
+        range:"",
+        content:""
+      },{
+        option:"",
+        range:"",
+        content:""
+      },{
+        option:"",
+        range:"",
+        content:""
+      }],
        tableData: [{
           date: '2016-05-03',
           name: '王小虎',
@@ -148,13 +206,33 @@ export default {
           name: '王小虎',
           address: '上海市普陀区金沙江路 1518 弄'
         }],
-    }
+
+
+ }
 
   },
   components: {},
   created(){},
   mounted(){},
   methods: {
+    highDdelete(index){
+      this.seniorData.splice(index, 1);
+    },
+    highAdd() {
+      let a={
+          option:"",
+          range:"",
+          content:""
+      }
+      this.seniorData.push(a)
+    },
+    highSee(){
+         this.seniorData=[]
+         this.seniorData=JSON.parse(JSON.stringify(this.seniorDatafit))
+         console.log(this.seniorDatafit)
+         console.log(this.seniorData)
+
+    },
     handleClick(tab, event) {
         console.log(tab, event);
       },
@@ -190,7 +268,7 @@ export default {
     color: #303133;
     -webkit-transition: 0.3s;
     transition: 0.3s;
-    width: 98%;
+    width: 98.8%;
 }
 .fileFolder .input {
     max-width: 215px;
@@ -224,5 +302,26 @@ export default {
     float: right;
     margin-right: 40px;
     margin-left: 15px;
+}
+.dialog-select{
+  width: 200px;
+  margin: 0 10px;
+}
+.dialog-select1{
+  width: 100px;
+  margin: 0 10px;
+
+}
+.dialog-input{
+  width: 200px;
+  margin: 0 10px;
+}
+.dialog-icon{
+  font-size: 22px;
+  margin: 0 10px;
+  color: #409EFF;
+}
+.dialog-dev{
+  margin-top: 15px;
 }
 </style>

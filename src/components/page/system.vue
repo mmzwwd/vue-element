@@ -1,5 +1,5 @@
 <template>
-  <div class="archives">
+  <div class="system">
     <el-tabs type="border-card"  v-model="systemName"  @tab-click="handleClick" >
       <el-tab-pane label="基本信息" name="basic" :key="'basic'">
         <basic-tab v-if="systemName=='basic'"> </basic-tab>
@@ -42,7 +42,11 @@ export default {
 }
 </script>
 <style  >
-.archives .el-tabs__item{
+.system .el-tabs__item{
       padding: 0 40px !important;
 }
+.system{
+  width: 98%;
+}
 </style>
+

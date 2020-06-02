@@ -36,16 +36,18 @@
                 <el-dropdown class="user-name" trigger="click" @command="handleCommand">
                     <span class="el-dropdown-link">
                         {{username}}
-                        <i class="el-icon-caret-bottom"></i>
+                        <!-- <i class="el-icon-caret-bottom"></i> -->
                     </span>
-                    <el-dropdown-menu slot="dropdown">
+                    <!-- <el-dropdown-menu slot="dropdown">
                          <router-link to="/tabs">
                             <el-dropdown-item>个人中心</el-dropdown-item>
                         </router-link>
                         <el-dropdown-item divided command="loginout">退出登录</el-dropdown-item>
-                    </el-dropdown-menu>
+                    </el-dropdown-menu> -->
                 </el-dropdown>
+                <el-button type="text" @click="LogOut" style="width:100px;color:#fff;margin-left: 10px;">退出</el-button>
             </div>
+
         </div>
     </div>
 </template>
@@ -75,6 +77,10 @@ export default {
                 Cookies.remove('ms_username');
                 this.$router.push('/login');
             }
+        },
+        LogOut(){
+                Cookies.remove('ms_username');
+                this.$router.push('/login');
         },
         // 侧边栏折叠
         collapseChage() {

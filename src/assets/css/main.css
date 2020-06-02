@@ -38,6 +38,8 @@ a {
     padding: 10px;
     overflow-y: scroll;
     box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .content-collapse {

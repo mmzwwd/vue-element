@@ -184,7 +184,7 @@ export default {
                     var time = now.getTime() + 1000*60*30;
                     console.log(time)
                     //{ expires:new Date(time) }
-                    localStorage.setItem('ms_username', this.param.username);
+                    // localStorage.setItem('ms_username', this.param.username);
                     Cookies.set('ms_username',this.param.username)
                     this.$router.push('/');
                 } else {
