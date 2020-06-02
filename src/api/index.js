@@ -21,13 +21,25 @@ function labelname (data) {
 function roleTree (data) {
     return http(url.roleTree, data, 'POST')
 }
-function save (data) {
-    return http(url.save, data, 'POST')
+function countrySave (data) {
+    return http(url.countrySave, data, 'POST')
+}
+function countryList (data) {
+    return http(url.countryList, data,)
+}
+function countryUpdate (data) {
+    return http(url.countryUpdate, data, 'POST')
+}
+function countryDelete (data) {
+    return http(url.countryDelete, data, 'POST')
 }
 export {
     login,
     roleTree,
     uploadFile,
     labelname,
-    save,
+    countrySave,
+    countryList,
+    countryUpdate,
+    countryDelete,
 }

@@ -9,30 +9,31 @@
             <el-form-item label="姓别:" >
                 <star-input-tag v-model="tableData" :labeltype="'labelname'" theme="新增" />
             </el-form-item>
-             <!-- <el-form-item label="民族:">
-                  <star-input-tag v-model="dynamicTags1" :labeltype="'民族'" theme="新增" />
+             <el-form-item label="民族:">
+                  <star-input-tag v-model="tableData" :labeltype="'民族'" theme="新增" />
             </el-form-item>
              <el-form-item label="国籍:">
-                 <star-input-tag v-model="dynamicTags2" :labeltype="'国籍'" theme="新增" />
+                 <star-input-tag v-model="countryList" :labeltype="'国籍'" theme="新增"  @toFather="countryListway()" />
             </el-form-item>
             <el-form-item label="籍贯:">
-                 <star-input-tag v-model="dynamicTags2" :labeltype="'籍贯'" theme="新增" />
+                 <star-input-tag v-model="tableData" :labeltype="'籍贯'" theme="新增" />
             </el-form-item>
              <el-form-item label="政治面貌:">
-                  <star-input-tag v-model="dynamicTags3" :labeltype="'政治面貌'" theme="新增" />
+                  <star-input-tag v-model="tableData" :labeltype="'政治面貌'" theme="新增" />
             </el-form-item>
              <el-form-item label="最高学历:">
-                <star-input-tag v-model="dynamicTags3" :labeltype="'最高学历'" theme="新增" />
+                <star-input-tag v-model="tableData" :labeltype="'最高学历'" theme="新增" />
             </el-form-item>
              <el-form-item label="最高学位:">
-               <star-input-tag v-model="dynamicTags3" :labeltype="'最高学位'" theme="新增" />
-            </el-form-item> -->
+               <star-input-tag v-model="tableData" :labeltype="'最高学位'" theme="新增" />
+            </el-form-item>
         </el-form>
     </div>
 </template>
 
 <script>
 import starInputTag from './starIInputTag'
+import {countryList } from '@/api/index';
   export default {
  components: { starInputTag },
     data() {
@@ -48,13 +49,26 @@ import starInputTag from './starIInputTag'
           date: 3,
           name: '虎',
         },],
-        dynamicTags: ['标签一', '标签哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇嗡嗡嗡嗡嗡嗡哇哇哇哇哇哇哇哇哇哇哇哇哇哇oisfdoeifjeorieferierifeifjrefjejfeiowfwoefrweorf二', '标签三','标签一', '标签二', '标签三'],
-        dynamicTags1: ['标签一', '标签二', '标签三'],
-        dynamicTags2: ['标签一', '标签二', '标签三'],
-        dynamicTags3: ['标签一', '标签二', '标签三'],
+        countryList:[],
       };
     },
-    methods: {}
+    mounted(){
+     this.countryListway()
+    },
+    methods: {
+      	countryListway() {
+				let  data={
+					name:this.inputValue
+				}
+				 countryList(data).then(res => {
+             console.log(res)
+             this.countryList=res.data
+				 })
+
+
+			},
+    }
+
   }
 </script>
 <style>

@@ -8,10 +8,12 @@ created(){   字符串转数组，定义在父组件
 },
 -->
 <template>
-	<div style="line-height: 48px;">
+	<div style="line-height: 48px;" >
+		<el-form @submit.native.prevent>
 		<div   v-for="(tag,index) in dynamicTags"
             :key="index" style="display: inline-block;">
-		<el-tag   v-if="tag.date==2"
+			 <!-- v-if="tag.date==2" -->
+		<el-tag
            closable size="medium"
             :disable-transitions="false"
             @click="editTag(tag,index)"
@@ -27,7 +29,7 @@ created(){   字符串转数组，定义在父组件
                 @blur="handleInput(tag,index)"
 				:style="{width:texts(words)}" maxlength="50" >
 		</el-tag>
-		<el-tag v-else style="margin-left: 11px;" size="medium">{{tag.name}}</el-tag>
+		<!-- <el-tag v-else style="margin-left: 11px;" size="medium">{{tag.name}}</el-tag> -->
 			</div>
 		<el-input
             class="input-new-tag"
@@ -44,10 +46,14 @@ created(){   字符串转数组，定义在父组件
             class="button-new-tag"
             size="small"
             @click="showInput">{{theme}}</el-button>
+			</el-form>
+
 	</div>
 </template>
 
 <script>
+import {countrySave,countryUpdate,countryDelete } from '@/api/index';
+
 	export default {
 		name: 'star-input-tag',
 		model: {
@@ -79,7 +85,8 @@ created(){   字符串转数组，定义在父组件
 			    labeltypes:this.labeltype,
 				inputValue: '',
 				num: -1,
-				words: ''
+				words: '',
+				selectName:"",
 			}
 		},
 		computed: {
@@ -103,7 +110,7 @@ created(){   字符串转数组，定义在父组件
 			}
 		},
 		mounted(){
-           this.aa()
+        //    this.aa()
 		},
 		methods: {
 			aa(){
@@ -115,8 +122,18 @@ created(){   字符串转数组，定义在父组件
 				return [...x];
 			},
 			handleClose(tag) {
-				console.log('删除')
-				this.dynamicTags.splice(this.dynamicTags.indexOf(tag), 1);
+				console.log('删除',tag)
+           var parame = new FormData();
+               parame.append("id",tag.id );
+				switch (this.labeltypes) {
+						case '国籍':
+						countryDelete(parame).then(res => {
+							if(res.code==200){
+							this.dynamicTags.splice(this.dynamicTags.indexOf(tag), 1);
+							}
+						})
+						break;
+					}
 			},
 			showInput() {
 				this.inputVisible = true;
@@ -126,20 +143,30 @@ created(){   字符串转数组，定义在父组件
 			},
 			handleInputConfirm() {
 				console.log('新增')
-				let inputValue = {
-					name:this.inputValue,
-					date: 2,
-                 }
-				if (inputValue) {
-					this.dynamicTags.push(inputValue);
+				let  data={
+					name:this.inputValue
 				}
-				this.dynamicTags =this.dynamicTags;
-				console.log(this.dynamicTags)
-				this.inputVisible = false;
-				this.inputValue = '';
+				if(this.inputValue){
+					switch (this.labeltypes) {
+						case '国籍':
+						countrySave(data).then(res => {
+							if(res.code==200){
+							this.$emit('toFather')
+							}
+							this.inputVisible = false;
+							this.inputValue = '';
+						})
+						break;
+					}
+				}else{
+					this.inputVisible = false;
+					this.inputValue = '';
+				}
+
 			},
 			editTag(tag, index) {
 				console.log(tag)
+				this.selectName=tag.name
 				this.num = index;
 				this.$nextTick(_ => {
 					this.$refs.editInput[0].focus();
@@ -147,14 +174,26 @@ created(){   字符串转数组，定义在父组件
 				this.words = tag.name;
 			},
 			handleInput(tag, index) {
-				console.log('修改')
+				console.log('修改',tag)
 				let words = this.words;
 				if (words) {
 					this.dynamicTags[index].name = words;
 				}
 				this.dynamicTags = this.dynamicTags;
-			    this.words = '';
-				this.num = -1;
+				if(this.selectName!=tag.name){
+                    switch (this.labeltypes) {
+						case '国籍':
+						countryUpdate(tag).then(res => {
+							this.words = '';
+							this.num = -1;
+						})
+						break;
+					}
+				}else{
+					this.words = '';
+				    this.num = -1;
+				}
+
 			}
 		}
 	}

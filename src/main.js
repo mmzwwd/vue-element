@@ -78,7 +78,7 @@ if (process.env.NODE_ENV === 'production') {
         axios.defaults.baseURL = ' http://192.168.1.7:8080';//路径
        }
 } else { //dev 开发环境
-    axios.defaults.baseURL = 'http://localhost:8080';//路径
+    axios.defaults.baseURL = 'http://192.168.1.113:8080';//路径
  }
 new Vue({
     router,

@@ -15,11 +15,11 @@ axios.defaults.retryDelay = 1000
 var loading, num = 0
 
 function startLoading() {
-    loading = Vue.prototype.$loading({
-        lock: true,
-        text: '加载中……',
-        background: 'rgba(0, 0, 0, 0.7)'
-    })
+    // loading = Vue.prototype.$loading({
+    //     lock: true,
+    //     text: '加载中……',
+    //     background: 'rgba(0, 0, 0, 0.7)'
+    // })
 }
 
 function endLoading() {
@@ -97,6 +97,7 @@ const http = (url, data, method = 'GET', responseType = 'json') => {
             data: data,
             responseType: responseType
         }).then(function(response) {
+            console.log(response.data.code)
           if (response.data.code == 200 && response.status == 200) {
                 resolve(response.data)
             } else {
