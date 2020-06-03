@@ -13,7 +13,7 @@
         <el-card class="box-card">
             <div slot="header" class="clearfix">
                 <span style="margin: 0 10px;">发表学术论文情况</span>
-                <el-button class="button-el"   type="primary" plain> 新增 </el-button>
+                <el-button class="button-el"  @click="sciencrAdd()"   type="primary" plain> 新增 </el-button>
                 <el-button class="button-el"   type="primary" plain> 导出 </el-button>
             </div>
             <!-- <div v-for="o in 4" :key="o" class="text item">
@@ -36,9 +36,9 @@
                     </el-table-column>
                     <el-table-column  label="操作" width="120" align="center">
                        <template slot-scope="scope">
-                           <el-button  @click.native.prevent="deleteRow(scope.$index, tableData)" type="text" size="small"> 查看
+                           <el-button  @click.native.prevent="sciencrRow('see',scope.$index, tableData)" type="text" size="small"> 查看
                            </el-button>
-                           <el-button  @click.native.prevent="deleteRow(scope.$index, tableData)" type="text" size="small"> 编辑
+                           <el-button  @click.native.prevent="sciencrRow('edit',scope.$index, tableData)" type="text" size="small"> 编辑
                            </el-button>
                         </template>
                     </el-table-column>
@@ -183,6 +183,68 @@
                     </el-table-column>
                 </el-table>
         </el-card>
+
+
+        <el-dialog :title="doctorTitle"  :visible.sync="dialogVisible" width="710px" >
+             <el-form   :model="learnForm" :rules="learn" ref="learnForm" label-width="115px"   class="demo-ruleForm" >
+                 <el-row>
+                    <el-col :span="12">
+                        <el-form-item label="发表日期:" prop="name">
+                            <el-input  v-if="doctorType" v-model="learnForm.name" class="maxwidth"></el-input>
+                            <span  v-if="!doctorType">{{learnForm.sex}}</span>
+                        </el-form-item>
+                    </el-col>
+                     <el-col :span="12">
+                        <el-form-item label="论文题目:" prop="sex">
+                            <el-input  v-if="doctorType" v-model="learnForm.name" class="maxwidth"></el-input>
+                            <span  v-if="!doctorType">{{learnForm.sex}}</span>
+                        </el-form-item>
+                    </el-col>
+                  </el-row>
+                  <el-row>
+                    <el-col :span="12">
+                        <el-form-item label="本人排名:" prop="name">
+                              <el-select v-if="doctorType" v-model="learnForm.sex" placeholder="请选择活动区域">
+                                <el-option label="区域一" value="shanghai"></el-option>
+                                <el-option label="区域二" value="beijing"></el-option>
+                            </el-select>
+                            <span  v-if="!doctorType">{{learnForm.sex}}</span>
+                          </el-form-item>
+                    </el-col>
+                     <el-col :span="12">
+                        <el-form-item label="是否通讯作者:" prop="sex">
+                            <el-select v-if="doctorType" v-model="learnForm.sex" placeholder="请选择活动区域">
+                                <el-option label="区域一" value="shanghai"></el-option>
+                                <el-option label="区域二" value="beijing"></el-option>
+                            </el-select>
+                            <span  v-if="!doctorType">{{learnForm.sex}}</span>
+                        </el-form-item>
+                    </el-col>
+                  </el-row>
+                  <el-row>
+                    <el-col :span="12">
+                        <el-form-item label="刊物名称:" prop="name">
+                            <el-input  v-if="doctorType" v-model="learnForm.name" class="maxwidth"></el-input>
+                            <span  v-if="!doctorType">{{learnForm.sex}}</span>
+                         </el-form-item>
+                    </el-col>
+                     <el-col :span="12">
+                        <el-form-item label="刊物类别:" prop="sex">
+                            <el-select v-if="doctorType" v-model="learnForm.sex" placeholder="请选择活动区域">
+                                <el-option label="区域一" value="shanghai"></el-option>
+                                <el-option label="区域二" value="beijing"></el-option>
+                            </el-select>
+                            <span  v-if="!doctorType">{{learnForm.sex}}</span>
+                        </el-form-item>
+                    </el-col>
+                  </el-row>
+              </el-form>
+          <span slot="footer" class="dialog-footer" v-if="doctorType">
+            <el-button @click="dialogVisible = false">取 消</el-button>
+            <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+          </span>
+      </el-dialog>
+
   </div>
 </template>
 
@@ -191,6 +253,11 @@ export default {
   name: '',
   data(){
     return {
+        dialogVisible:false,
+        doctorTitle:'',
+        doctorType:true,
+        learnForm:{sex: '王小虎',          name: '王小虎',
+},
         tableData: [{
           date: '2016-05-03',
           name: '王小虎',
@@ -225,7 +292,24 @@ export default {
   components: {},
   created(){},
   mounted(){},
-  methods: {}
+  methods: {
+    sciencrAdd(){
+    this.dialogVisible = true
+    this.doctorType=true
+    this.doctorTitle="添加发表学术论文情况"
+    },
+    sciencrRow(state){
+      this.dialogVisible = true
+      if(state=='see'){
+      this.doctorType=false
+      this.doctorTitle="查看发表学术论文情况"
+      }
+      if(state=='edit'){
+        this.doctorType=true
+      this.doctorTitle="编辑发表学术论文情况"
+      }
+    },
+  }
 }
 </script>
 <style  scoped>
@@ -259,5 +343,8 @@ export default {
 }
 .top-card{
   margin-top: 60px;
+}
+.maxwidth {
+    max-width: 215px;
 }
 </style>

@@ -54,6 +54,11 @@ let  routerUrl={
             title: '首页'
         },
         {
+            icon: 'el-icon-tickets',
+            index: 'archives',
+            title: '档案信息',
+        },
+        {
             icon: 'el-icon-setting',
             index: '2',
             title: '管理中心',
