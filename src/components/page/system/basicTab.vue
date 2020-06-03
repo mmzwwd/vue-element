@@ -1,11 +1,14 @@
 <template>
     <div class="smbasicTab">
         <div class="head">
-            <div class="head-left">
+            <!-- <div class="head-left">
                 <p style="line-height: 40px;font-size: 18px;">基本信息下拉菜单维护</p>
-            </div>
+            </div> -->
         </div>
         <el-form ref="form" :model="form" label-width="180px" style="width:95%;" >
+           <el-form-item  label-width="50px">
+                <span style="font-size: 16px;">基本信息下拉菜单维护</span>
+            </el-form-item>
             <el-form-item label="姓别:" >
                 <star-input-tag v-model="tableData" :labeltype="'labelname'" theme="新增" />
             </el-form-item>
@@ -82,12 +85,12 @@ import {countryList } from '@/api/index';
 }
 .head {
     width: 100%;
-    height: 100px;
+    height: 15px;
     margin-bottom: 10px;
 }
 .head-left {
     width: 400px;
-    height: 100px;
+    height: 15px;
     margin-left: 30px;
     float: left;
 }
