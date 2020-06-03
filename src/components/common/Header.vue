@@ -117,7 +117,7 @@ export default {
         }
     },
     mounted() {
-        if (document.body.clientWidth < 1500) {
+        if (document.body.clientWidth < 1280) {
             this.collapseChage();
         }
     }

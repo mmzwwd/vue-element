@@ -161,9 +161,11 @@ export default {
         // 通过 Event Bus 进行组件间通信，来折叠侧边栏
         bus.$on('collapse', msg => {
             this.collapse = msg;
+            console.log(msg)
             bus.$emit('collapse-content', msg);
         });
-    }
+    },
+    methods:{}
 };
 </script>
 <style scoped>
